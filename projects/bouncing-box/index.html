@@ -61,7 +61,9 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
+			var positionX = 0;
+			var points = 0;
+			var speed = 10;
 
 			
 			/* 
@@ -70,7 +72,16 @@
 			turn it around! 
 			*/
 			function update() {
-				
+				/*Your Code to Increase positionX by 10 HERE*/
+				if(positionX > boardWidth){
+					speed = -speed;
+				}
+				if(positionX < 0){
+					speed = -speed;
+				}
+				positionX = positionX + speed;
+				//positionX += 10; same as above note 10 changed to speed
+				moveBoxTo(positionX);
 
 			};
 
@@ -80,7 +91,15 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
+				positionX = 0; //sends back to left
+				if(speed > 0){//speed positive add 4
+					speed += 4;
+				}else if(speed <0){//speed negative subtract 4
+					speed-=4;
+				}
+
+				points += 1; // add 1 topoints
+				changeBoxText(points);
 
 
 			};
